@@ -164,7 +164,7 @@ class Net_LN(nn.Module):
 
 class Net_BN(nn.Module):
     def __init__(self, drop=0.1):
-        super(Net_L1_BN, self).__init__()
+        super(Net_BN, self).__init__()
         # Input Block
         self.convblock1 = nn.Sequential(
             nn.Conv2d(in_channels=1, out_channels=16, kernel_size=(3, 3), padding=0, bias=False),
