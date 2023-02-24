@@ -46,22 +46,30 @@ net = Custom_Resnet().to(device)
 print(summary(net, input_size=(3, 32, 32)))
 
 
-found_lrs = []
 
-for i in range(5):
-  exp_net = copy.deepcopy(net).to(device)
-  optimizer = torch.optim.SGD(exp_net.parameters(), lr=0.001, momentum=0.9)
-  criterion = nn.NLLLoss()
-  lr_finder = LRFinder(exp_net, optimizer, criterion, device=device)
-  lr_finder.range_test(train_loader, end_lr=2, num_iter=200)
-  lr_finder.plot()
-  min_loss = min(lr_finder.history['loss'])
-  ler_rate = lr_finder.history['lr'][np.argmin(lr_finder.history['loss'], axis=0)]
-  print("Max LR is {}".format(ler_rate))
-  found_lrs.append(ler_rate)
+exp_net = copy.deepcopy(net).to(device)
+optimizer = torch.optim.SGD(exp_net.parameters(), lr=0.001, momentum=0.9)
+criterion = nn.NLLLoss()
+lr_finder = LRFinder(exp_net, optimizer, criterion, device=device)
+lr_finder.range_test(train_loader, end_lr=2, num_iter=200)
+lr_finder.plot()
+min_loss = min(lr_finder.history['loss'])
+ler_rate_1 = lr_finder.history['lr'][np.argmin(lr_finder.history['loss'], axis=0)]
+print("Max LR is {}".format(ler_rate_1))
 
-ler_rate = min(found_lrs)
-print("Determined min LR is:", ler_rate)
+exp_net = copy.deepcopy(net).to(device)
+optimizer = torch.optim.SGD(exp_net.parameters(), lr=ler_rate_1/10, momentum=0.9)
+criterion = nn.NLLLoss()
+lr_finder = LRFinder(exp_net, optimizer, criterion, device=device)
+lr_finder.range_test(train_loader, end_lr=ler_rate_1*10, num_iter=200)
+lr_finder.plot()
+min_loss = min(lr_finder.history['loss'])
+ler_rate_2 = lr_finder.history['lr'][np.argmin(lr_finder.history['loss'], axis=0)]
+print("Max LR is {}".format(ler_rate_2))
+
+
+ler_rate = ler_rate_2
+print("Determined Max LR is:", ler_rate)
 
 train_net_1 = copy.deepcopy(net).to(device)
 optimizer = torch.optim.SGD(train_net_1.parameters(), lr=(ler_rate/10), momentum=0.9)
