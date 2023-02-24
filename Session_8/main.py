@@ -7,7 +7,7 @@ import albumentations as A
 from torchvision import datasets
 from train import fit_model
 from data import AlbumentationImageDataset
-from models.Assignment_8_model import Custom_Resnet
+from Assignment_8_model import Custom_Resnet
 from torch_lr_finder import LRFinder
 from torchsummary import summary
 
