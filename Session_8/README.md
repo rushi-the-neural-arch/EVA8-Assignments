@@ -9,6 +9,7 @@ The CIFAR10 dataset was imported using `torchvision.datasets` and augmented usin
 * RandomCrop of 32, 32 (after padding of 4)
 * FlipLR 
 * CutOut(8, 8)
+<img width="1013" alt="Screenshot 2023-02-25 at 05 20 46" src="https://user-images.githubusercontent.com/34182074/221322336-a5c68764-b198-4abc-a3d2-ef03a72022d2.png">
 
 ## Architecture
 
@@ -38,9 +39,11 @@ The CIFAR10 dataset was imported using `torchvision.datasets` and augmented usin
 
 ## Training Technique
 
+
 This model was trained for 24 epochs using the One-Cycle Policy. The One Cycle Policy, introduced by Leslie Smith in 2018, is a learning rate scheduling technique that aims to achieve better accuracy in less time. It involves a cyclic increase and decrease of the learning rate during training, where the learning rate starts low, then gradually increases until it reaches a maximum value, and then decreases back to the starting value. This helps the model to converge faster and reach a better generalization performance.
 
 The learning rate at which the loss was the lowest was taken as the `max_lr` while the `min_lr` was taken to be one-tenth of it. Also, maximum learning rate was reached within 5 epochs. No annihilation was applied at the end.
+![OCP](https://user-images.githubusercontent.com/34182074/221322875-fa6918a0-73e8-4e6d-9288-afe6d71f6fb3.png)
 
 ## Results
 
