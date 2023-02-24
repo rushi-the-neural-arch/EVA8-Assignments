@@ -44,6 +44,6 @@ The learning rate at which the loss was the lowest was taken as the `max_lr` whi
 
 ## Results
 
-Final Training Accuracy - **95.14 %**
+Final Training Accuracy - **95.18 %**
 \
-Final Testing Accuracy - **88.98 %**
+Final Testing Accuracy - **89.01 %**
