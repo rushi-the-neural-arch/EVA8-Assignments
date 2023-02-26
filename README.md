@@ -14,3 +14,4 @@ These were imported using `torchvision.datasets` and augmented using the [albume
 * Custom CNN Model for Sum Prediction and Digit Prediction on MNIST Dataset
 * Custom Resnet for CIFAR10
 * Scratch implementation of a simple Transformer model for CIFAR10 classification
+* A Simple Transformer implemented from scratch
