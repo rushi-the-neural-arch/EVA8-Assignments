@@ -7,7 +7,7 @@ import albumentations as A
 from torchvision import datasets
 from train import fit_model
 from data import AlbumentationImageDataset
-from Assignment_9_model import Custom_Resnet
+from Assignment_9_model import Transformer
 from torch_lr_finder import LRFinder
 from torchsummary import summary
 import seaborn as sns
@@ -42,7 +42,7 @@ test_loader = torch.utils.data.DataLoader(AlbumentationImageDataset(testset, tra
 
 use_cuda = torch.cuda.is_available()
 device = torch.device("cuda" if use_cuda else "cpu")
-net = Custom_Resnet().to(device)
+net = Transformer().to(device)
 print(summary(net, input_size=(3, 32, 32)))
 
 
