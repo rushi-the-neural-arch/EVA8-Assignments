@@ -1,5 +1,5 @@
 
-# GradCAM Visualization of Resnet 18 on CIFAR10
+# Fully Convolutional Vision Transformer
 
 This repository contains the code for Assignment 10 of the EVA8 course. The goal of this assignment is to train a fully convolutional Vision Transformer on the CIFAR10 dataset for 24 epochs and 10 GradCAM outputs on any misclassified images.
 ## Data
